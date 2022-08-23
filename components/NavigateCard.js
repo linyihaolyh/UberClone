@@ -37,9 +37,8 @@ const NavigateCard = () => {
                             location:details.geometry.location,
                             description: data.description,
                         }));
-                        navigation.navigate('RideOptionsCard');
-                    
-                    
+                    navigation.navigate('RideOptionsCard');
+                      
                 }}
             />
         </View>
