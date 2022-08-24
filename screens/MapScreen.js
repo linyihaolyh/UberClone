@@ -1,20 +1,29 @@
-import { StyleSheet, Text, View ,KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, Text, View ,KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import React from 'react';
 import tw from 'tailwind-react-native-classnames';
 import Map from '../components/Map';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NavigateCard from '../components/NavigateCard';
 import RideOptionsCard from '../components/RideOptionsCard';
-import {Platform} from 'react-native';
+import { Icon } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 
 const MapScreen = () => {
 
   const Stack = createNativeStackNavigator();
+  const navigation = useNavigation();
 
 
   return (
     // keyboardpadding for ios only
-    <KeyboardAvoidingView behavior= {(Platform.OS === 'ios')? "padding" : null}> 
+    <View> 
+      <TouchableOpacity style={tw`absolute top-16 left-8 bg-gray-100 z-20 p-3 rounded-full shadow-lg`}
+      onPress={()=>navigation.navigate('HomeScreen')}>
+        <Icon name='chevron-left' />
+      </TouchableOpacity>
+
+
+
       <View style={tw`h-1/2`}>
         <Map/>
       </View>
@@ -34,7 +43,7 @@ const MapScreen = () => {
         </Stack.Navigator>
           
       </View>
-    </KeyboardAvoidingView>
+    </View>
   )
 }
 
